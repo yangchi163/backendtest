@@ -1,4 +1,4 @@
-package com.decobim.model;
+package com.decobim.model.prepareForTest;
 
 /**
  * Created by Administrator on 2017/8/8.
