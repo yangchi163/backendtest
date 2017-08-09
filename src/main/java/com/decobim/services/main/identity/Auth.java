@@ -7,29 +7,26 @@ import com.decobim.services.main.Base;
 import com.decobim.utils.http.HttpClientUtil;
 
 /**
- * 创建一个新用户
- * url: http://api.decobim.com/v1/identity/registry
- * post
- * Created by Administrator on 2017/8/8.
+ * 获得token
+ * url: http://api.decobim.com/v1/identity/auth
+ * Created by Administrator on 2017/8/9.
  */
-public class Registry extends Base {
-    public Registry() {
+public class Auth extends Base {
+    public Auth() {
     }
-    public HttpClientResponse registry(User user) throws Exception {
-        return registry(user.getUserName(),user.getUserPwd());
-    }
-
-    public HttpClientResponse registry(String mobile,String password) throws Exception {
+    public HttpClientResponse auth(String mobile,String password) throws Exception {
         String url = uriBuilder
-                .setPath(Identity.registry())
+                .setPath(Identity.auth())
                 .build()
                 .toString();
         bodyMap.put("mobile",mobile);
         bodyMap.put("password",password);
-        String body = gson.toJson(bodyMap);
         request.setUrl(url);
-        request.setBody(body);
+        request.setBody(gson.toJson(bodyMap));
         return HttpClientUtil.doPost(request);
     }
 
+    public HttpClientResponse auth(User user) throws Exception {
+        return auth(user.getUserName(),user.getUserPwd());
+    }
 }
