@@ -1,6 +1,7 @@
 package com.decobim.services.assertResult;
 
 import com.decobim.model.http.HttpClientResponse;
+import com.decobim.model.prrepareForAssert.StatusCode;
 import com.google.gson.JsonObject;
 import static org.testng.Assert.*;
 
@@ -22,6 +23,12 @@ public class AssertCommon extends AssertBase {
         JsonObject object = (JsonObject) parser.parse(response.getBody());
         assertEquals(object.get("message").getAsString(), message, "message异常");
         assertEquals(object.get("code").getAsString(), code, "code异常");
+    }
+
+    //验证未鉴权
+    public static void unAuthorized(HttpClientResponse response){
+        JsonObject object = (JsonObject) parser.parse(response.getBody());
+        assertEquals(object.get("status").getAsString(), StatusCode.UNAUTHORIZED,"UNAUTHORIZED");
     }
 
     //验证分页格式

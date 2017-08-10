@@ -3,7 +3,7 @@ package com.decobim.services.main.user;
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.http.HttpHeadersKey;
 import com.decobim.model.prepareForTest.User;
-import com.decobim.model.url.urlPath.UserUrl;
+import com.decobim.model.url.urlPath.UserModule;
 import com.decobim.services.main.Base;
 import com.decobim.utils.Tools;
 import com.decobim.utils.http.HttpClientUtil;
@@ -21,7 +21,7 @@ public class GetUsers extends Base {
     public HttpClientResponse getUsers(User user)throws Exception{
         String token = Tools.getAuth(user);
         String url = uriBuilder
-                .setPath(UserUrl.getUsers())
+                .setPath(UserModule.getUsers())
                 .build()
                 .toString();
         Map<String,String> headerMap = request.getHeaders();
@@ -34,7 +34,7 @@ public class GetUsers extends Base {
     public HttpClientResponse getUsers(User user,String pageNum,String pageSize) throws Exception {
         String token = Tools.getAuth(user);
         String url = uriBuilder
-                .setPath(UserUrl.getUsers())
+                .setPath(UserModule.getUsers())
                 .setParameter("pageNum", pageNum)
                 .setParameter("pageSize", pageSize)
                 .build()

@@ -6,4 +6,5 @@ package com.decobim.model.prrepareForAssert;
 public class StatusCode {
     public static String OK = "200";
     public static String PARAMETERERROR = "400";
+    public static String UNAUTHORIZED = "401";
 }

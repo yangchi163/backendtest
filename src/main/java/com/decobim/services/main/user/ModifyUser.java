@@ -3,7 +3,7 @@ package com.decobim.services.main.user;
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.http.HttpHeadersKey;
 import com.decobim.model.prepareForTest.User;
-import com.decobim.model.url.urlPath.UserUrl;
+import com.decobim.model.url.urlPath.UserModule;
 import com.decobim.services.main.Base;
 import com.decobim.utils.Tools;
 import com.decobim.utils.http.HttpClientUtil;
@@ -23,7 +23,7 @@ public class ModifyUser extends Base{
         String token = Tools.getAuth(user);
         String userId = Tools.getUserId(other);
         String url = uriBuilder
-                .setPath(UserUrl.getUser(userId))
+                .setPath(UserModule.getUser(userId))
                 .build()
                 .toString();
         bodyMap.put("name",name);

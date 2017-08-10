@@ -3,7 +3,7 @@ package com.decobim.services.main.user;
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.http.HttpHeadersKey;
 import com.decobim.model.prepareForTest.User;
-import com.decobim.model.url.urlPath.UserUrl;
+import com.decobim.model.url.urlPath.UserModule;
 import com.decobim.services.main.Base;
 import com.decobim.utils.Tools;
 import com.decobim.utils.http.HttpClientUtil;
@@ -24,7 +24,7 @@ public class GetUser extends Base{
         String token = Tools.getAuth(user);
         String roleId = "100";
         String url = uriBuilder
-                .setPath(UserUrl.getUser(userId))
+                .setPath(UserModule.getUser(userId))
                 .build()
                 .toString();
         Map<String,String> headerMap = request.getHeaders();
