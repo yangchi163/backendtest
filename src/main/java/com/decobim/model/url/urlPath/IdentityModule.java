@@ -3,7 +3,8 @@ package com.decobim.model.url.urlPath;
 /**
  * Created by Administrator on 2017/8/8.
  */
-public class Identity {
+public class IdentityModule {
+
     public static String registry(){
         return "/v1/identity/registry";
     }

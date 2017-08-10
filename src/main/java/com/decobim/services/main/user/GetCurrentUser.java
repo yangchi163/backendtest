@@ -2,11 +2,10 @@ package com.decobim.services.main.user;
 
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.http.HttpHeadersKey;
-import com.decobim.model.url.urlPath.User;
+import com.decobim.model.url.urlPath.UserModule;
 import com.decobim.services.main.Base;
 import com.decobim.utils.http.HttpClientUtil;
 
-import java.net.URISyntaxException;
 import java.util.Map;
 
 /**
@@ -20,7 +19,7 @@ public class GetCurrentUser extends Base{
     }
     public HttpClientResponse getCurrentUser(String token,String roleId) throws Exception {
         String url = uriBuilder
-                .setPath(User.getCurrentUser())
+                .setPath(UserModule.getCurrentUser())
                 .build()
                 .toString();
         Map<String,String> headers = request.getHeaders();

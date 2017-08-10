@@ -2,7 +2,7 @@ package com.decobim.services.main.identity;
 
 import com.decobim.model.prepareForTest.User;
 import com.decobim.model.http.HttpClientResponse;
-import com.decobim.model.url.urlPath.Identity;
+import com.decobim.model.url.urlPath.IdentityModule;
 import com.decobim.services.main.Base;
 import com.decobim.utils.http.HttpClientUtil;
 
@@ -16,7 +16,7 @@ public class Auth extends Base {
     }
     public HttpClientResponse auth(String mobile,String password) throws Exception {
         String url = uriBuilder
-                .setPath(Identity.auth())
+                .setPath(IdentityModule.auth())
                 .build()
                 .toString();
         bodyMap.put("mobile",mobile);
