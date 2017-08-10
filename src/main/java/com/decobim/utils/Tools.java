@@ -25,6 +25,7 @@ public class Tools {
         Auth auth = new Auth();
         HttpClientResponse response = auth.auth(user);
         JsonObject object = (JsonObject) parser.parse(response.getBody());
+        System.out.println(object);
         assertTrue(object.has("token"),"no token");
         token = object.get("token").getAsString();
         return token;

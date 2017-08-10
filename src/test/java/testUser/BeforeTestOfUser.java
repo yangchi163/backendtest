@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
  */
 public class BeforeTestOfUser {
     private Registry registry = new Registry();
-    @BeforeTest
+    @Test
     public void beforeTest() throws Exception {
         User user = User.user4();
         registry.registry(user);
