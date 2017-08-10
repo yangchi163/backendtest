@@ -41,14 +41,23 @@ public class Tools {
         return userId;
     }
 
-    public static String getRoleId(User user, Project project) throws Exception {
-        String roleId ;
-        GetRoleListOfSbInProject getRoleListOfSbInProject = new GetRoleListOfSbInProject();
-        HttpClientResponse response = getRoleListOfSbInProject.getRoleListOfSbInProject(user,project);
-        JsonArray root = (JsonArray) parser.parse(response.getBody());
-        assertTrue(root.size()>0,"has no role");
-        JsonObject obj = (JsonObject) root.get(0);
-        roleId = obj.get("roleId").getAsString();
+    public static String getRoleId(User user,Project project) throws Exception {
+        String roleId = null;
+        ProjectLists projectLists = new ProjectLists();
+        HttpClientResponse response = projectLists.projectLists(user);
+        JsonObject root = (JsonObject) parser.parse(response.getBody());
+        JsonArray list = root.getAsJsonArray("list");
+        Iterator<JsonElement> it = list.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            if (obj.get("name").getAsString().equals(project.getName())){
+                JsonArray roles = obj.getAsJsonArray("roles");
+                assertTrue(roles.size() > 0 ,"has no role");
+                JsonObject obj2 = (JsonObject) roles.get(0);
+                roleId = obj2.get("roleId").getAsString();
+                return roleId;
+            }
+        }
         return roleId;
     }
 
