@@ -6,8 +6,11 @@ import com.decobim.model.prepareForTest.User;
 import com.decobim.model.prrepareForAssert.StatusCode;
 import com.decobim.services.assertResult.AssertCommon;
 import com.decobim.services.assertResult.AssertProject;
+import com.decobim.services.main.project.AddMeasurementInfo;
 import com.decobim.services.main.project.CreateProject;
+import com.decobim.services.main.project.GetProject;
 import com.decobim.services.main.project.ProjectLists;
+import com.decobim.utils.Tools;
 import org.testng.annotations.Test;
 
 /**
@@ -16,6 +19,8 @@ import org.testng.annotations.Test;
 public class TestCreateProject {
     private ProjectLists projectLists = new ProjectLists();
     private CreateProject createProject = new CreateProject();
+    private GetProject getProject = new GetProject();
+    private AddMeasurementInfo addMeasurementInfo = new AddMeasurementInfo();
     private Project project = Project.jingjiLake();
     private User user = User.user6();
 
@@ -43,5 +48,22 @@ public class TestCreateProject {
         AssertCommon.statusCode(response, StatusCode.OK);
         AssertCommon.assertPaging(response,"1","10000","1");
         AssertProject.projectLists(response,"1");
+    }
+
+    @Test(description = "查看项目")
+    public void testCreateProject04() throws Exception {
+        HttpClientResponse response = getProject.getProject(user,project);
+        System.out.println(response);
+        AssertCommon.statusCode(response,StatusCode.OK);
+        AssertProject.getProject(response,project);
+    }
+
+    @Test(description = "修改项目项目清单库版本信息和定额库版本信息")
+    public void testCreateProject05() throws Exception {
+        HttpClientResponse response = addMeasurementInfo.addMeasurementInfo(user,project);
+        System.out.println(response);
+        AssertCommon.statusCode(response,StatusCode.OK);
+        AssertProject.addMeasurementInfo(response,project, Tools.getMeasurementBillDbVersionId(user),
+                Tools.getMeasurementQuotaDbVersionId(user));
     }
 }

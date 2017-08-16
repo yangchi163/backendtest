@@ -9,32 +9,28 @@ import com.decobim.services.main.Base;
 import com.decobim.utils.Tools;
 import com.decobim.utils.http.HttpClientUtil;
 
-import java.util.Map;
 
 /**
- * 创建项目
- * http://test.api.decobim.com/v1/projects
- * post
- * Created by Administrator on 2017/8/10.
+ * 删除项目
+ * http://test.api.decobim.com/v1/projects/1
+ * delete
+ * Created by Administrator on 2017/8/11.
  */
-public class CreateProject extends Base{
-    public CreateProject() {
+public class DeleteProject extends Base {
+    public DeleteProject() {
     }
-    public HttpClientResponse createProject(User user, Project project) throws Exception {
-        return createProject(Tools.getAuth(user),project);
+    public HttpClientResponse deleteProject(User user, Project project) throws Exception {
+        return deleteProject(Tools.getAuth(user),Tools.getProjectId(user,project));
     }
-
-    public HttpClientResponse createProject(String token, Project project) throws Exception {
+    public HttpClientResponse deleteProject(String token,String projectId) throws Exception {
         String url = uriBuilder
-                .setPath(ProjectModule.createProject())
+                .setPath(ProjectModule.deleteProject(projectId))
                 .build()
                 .toString();
-        if (token != null){
+        if(token != null){
             request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         }
         request.setUrl(url);
-        request.setBody(gson.toJson(project));
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doDelete(request);
     }
-
 }

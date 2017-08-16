@@ -5,6 +5,7 @@ import com.decobim.model.prepareForTest.Project;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.Iterator;
 
@@ -45,6 +46,22 @@ public class AssertProject extends AssertBase {
 
     public static void createProject(HttpClientResponse response,Project project){
         verifyProject(response.getBody(),project);
+    }
+
+    public static void getProject(HttpClientResponse response,Project project){
+        verifyProject(response.getBody(),project);
+    }
+
+    public static void modifyProject(HttpClientResponse response,Project project){
+        verifyProject(response.getBody(),project);
+    }
+
+    public static void addMeasurementInfo(HttpClientResponse response,Project project,String measurementBillDbVersionId,
+                                          String measurementQuotaDbVersionId){
+        verifyProject(response.getBody(),project);
+        JsonObject root = (JsonObject) parser.parse(response.getBody());
+        assertEquals(root.get("measurementBillDbVersionId").getAsString(),measurementBillDbVersionId,"measurementBillDbVersionId 错误");
+        assertEquals(root.get("measurementQuotaDbVersionId").getAsString(),measurementQuotaDbVersionId,"measurementQuotaDbVersionId错误");
     }
 
     private static void verifyProject(String json, Project project){
