@@ -24,8 +24,12 @@ public class Registry extends Base {
                 .setPath(IdentityModule.registry())
                 .build()
                 .toString();
-        bodyMap.put("mobile",mobile);
-        bodyMap.put("password",password);
+        if(mobile != null){
+            bodyMap.put("mobile",mobile);
+        }
+        if(password != null){
+            bodyMap.put("password",password);
+        }
         String body = gson.toJson(bodyMap);
         request.setUrl(url);
         request.setBody(body);

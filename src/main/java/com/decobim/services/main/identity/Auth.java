@@ -19,8 +19,12 @@ public class Auth extends Base {
                 .setPath(IdentityModule.auth())
                 .build()
                 .toString();
-        bodyMap.put("mobile",mobile);
-        bodyMap.put("password",password);
+        if(mobile != null){
+            bodyMap.put("mobile",mobile);
+        }
+        if (password != null){
+            bodyMap.put("password",password);
+        }
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));
         return HttpClientUtil.doPost(request);

@@ -22,4 +22,22 @@ public class ProjectModule {
         url = MessageFormat.format(url,projectId);
         return url;
     }
+
+    public static String modifyProject(String projectId){
+        String url = "/v1/projects/{0}";
+        url = MessageFormat.format(url,projectId);
+        return url;
+    }
+
+    public static String addMeasurementInfo(String projectId){
+        String url = "/v1/projects/{0}/measurement-info";
+        url = MessageFormat.format(url,projectId);
+        return url;
+    }
+
+    public static String deleteProject(String projectId){
+        String url = "/v1/projects/{0}";
+        url = MessageFormat.format(url,projectId);
+        return url;
+    }
 }

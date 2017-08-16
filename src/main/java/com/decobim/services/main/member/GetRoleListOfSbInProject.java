@@ -27,8 +27,12 @@ public class GetRoleListOfSbInProject extends Base{
                 .setPath(MemberModule.getRoleListOfSbInProject(userId,projectId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        if(token != null){
+            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        }
+        if(roleId != null){
+            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        }
         request.setUrl(url);
         return HttpClientUtil.doGet(request);
     }
