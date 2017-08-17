@@ -12,6 +12,10 @@ public class Role {
         this.roleId = roleId;
     }
 
+    public Role(String name){
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -56,7 +60,16 @@ public class Role {
         return new Role("180","预决算");
     }
     public static Role chengxuyuan(){
-        return new Role("","程序员");
+        return new Role("程序员");
+    }
+    public static Role ceshiyuan1(){
+        return new Role("测试员1");
+    }
+    public static Role ceshiyuan2(){
+        return new Role("测试员2");
+    }
+    public static Role forModify(){
+        return new Role("修改后role");
     }
 
     @Override

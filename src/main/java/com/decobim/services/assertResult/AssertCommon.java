@@ -23,6 +23,14 @@ public class AssertCommon extends AssertBase {
         JsonObject object = (JsonObject) parser.parse(response.getBody());
         assertEquals(object.get("message").getAsString(), message, "message异常");
         assertEquals(object.get("code").getAsString(), code, "code异常");
+        assertTrue(object.has("extra"),"no extra");
+    }
+
+    public static void returnException(HttpClientResponse response) {
+        JsonObject object = (JsonObject) parser.parse(response.getBody());
+        assertTrue(object.has("message"),"no message");
+        assertTrue(object.has("code"),"no code");
+        assertTrue(object.has("extra"),"no extra");
     }
 
     //验证未鉴权
