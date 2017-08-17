@@ -7,9 +7,9 @@
         </packages>
     </test>
     <!--注册用户1，未注册用户2,3-->
-    <test name="identity">
+    <test name="testIdentity">
         <packages>
-            <package name="identity"/>
+            <package name="testIdentity"/>
         </packages>
     </test>
     <!--注册用户4,5-->
@@ -19,21 +19,21 @@
         </packages>
     </test>-->
     <!--注册用户6无项目,7一个项目,8一个项目,9一个项目，且8添加9为项目成员-->
-    <test name="project">
+    <test name="testProject">
         <packages>
-            <package name="project"/>
+            <package name="testProject"/>
         </packages>
     </test>
     <!--注册用户10，一个项目-->
-    <test name="role">
+    <test name="testRole">
         <packages>
-            <package name="role"/>
+            <package name="testRole"/>
         </packages>
     </test>
     <!--注册用户11,12,13-->
-    <test name="member">
+    <test name="testMember">
         <packages>
-            <package name="member"/>
+            <package name="testMember"/>
         </packages>
     </test>
 </suite>

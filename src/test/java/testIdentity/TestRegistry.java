@@ -28,7 +28,7 @@ public class TestRegistry {
         System.out.println("testRegistry02");
         User user = User.user2();
         HttpClientResponse response = registry.registry(user);
-        //System.out.println(response);
+        System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.OK);
         AssertIdentity.registry(response,user);
     }

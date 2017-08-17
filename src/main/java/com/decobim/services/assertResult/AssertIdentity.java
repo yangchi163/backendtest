@@ -5,6 +5,7 @@ import com.decobim.model.prepareForTest.User;
 import com.decobim.model.http.HttpClientResponse;
 import com.google.gson.JsonObject;
 import static org.testng.Assert.*;
+
 /**
  * Created by Administrator on 2017/8/9.
  */
@@ -16,7 +17,7 @@ public class AssertIdentity extends AssertBase{
         assertEquals(object.get("status").getAsString(), RecordStatus.NORMAL,"status不对");
         assertTrue(object.has("userId"),"没有userId");
         assertTrue(object.has("avatarUrl"),"没有avatarUrl");
-        assertTrue(object.has("pfileId"),"没有pfileId");
+        assertTrue(object.has("created"),"no created");
     }
 
     public static void auth(HttpClientResponse response){
@@ -24,4 +25,5 @@ public class AssertIdentity extends AssertBase{
         assertTrue(object.has("token"),"no token");
         assertTrue(object.has("userId"),"no userId");
     }
+
 }

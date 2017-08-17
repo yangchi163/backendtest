@@ -1,4 +1,4 @@
-package member;
+package testMember;
 
 import com.decobim.model.prepareForTest.Project;
 import com.decobim.model.prepareForTest.User;
