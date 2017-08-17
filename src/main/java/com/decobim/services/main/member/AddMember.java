@@ -34,7 +34,7 @@ public class AddMember extends Base {
         request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
         request.setBody(gson.toJson(addMember));
         request.setUrl(url);
-        System.out.println(request);
+        //System.out.println(request);
         return HttpClientUtil.doPost(request);
     }
 }

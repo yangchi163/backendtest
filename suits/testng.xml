@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="backend">
+<suite name="backendTest">
     <!--清除数据，打开数据库连接-->
-    <test name="beforeSuite">
+    <test name="start">
         <packages>
-            <package name="beforeSuite"/>
+            <package name="start"/>
         </packages>
     </test>
     <!--注册用户1，未注册用户2,3-->
@@ -30,71 +30,10 @@
             <package name="role"/>
         </packages>
     </test>
-    <!--注册用户11,12-->
+    <!--注册用户11,12,13-->
     <test name="member">
         <packages>
             <package name="member"/>
         </packages>
     </test>
-    <!--注册用户13,14,15,16,17-->
-    <!--
-    <test name="files">
-        <packages>
-            <package name="files"/>
-        </packages>
-    </test>
-    -->
-    <!--注册用户18,19-->
-    <test name="barcode">
-        <packages>
-            <package name="barcode"/>
-        </packages>
-    </test>
-    <!--注册用户20,21-->
-    <test name="model">
-        <packages>
-            <package name="model"/>
-        </packages>
-    </test>
-    <!--注册用户22,23供bimmodel使用-->
-    <test name="bimModel">
-        <packages>
-            <package name="bimModel"/>
-        </packages>
-    </test>
-    <!--注册用户24,25,26,27,28供task使用-->
-    <!--
-    <test name="task">
-        <packages>
-            <package name="task"/>
-        </packages>
-    </test>
-    -->
-    <!--注册用户29,30,31 供family使用-->
-    <!--
-    <test name="family">
-        <packages>
-            <package name="family"/>
-        </packages>
-    </test>
-    -->
-    <!--用户32，33,yinjilake项目，真实模型-->
-    <test name="measurement">
-        <packages>
-            <package name="measurement"/>
-        </packages>
-    </test>
-    <!--用户34，35,jingjilake项目-->
-    <test name="process">
-        <packages>
-            <package name="process"/>
-        </packages>
-    </test>
-    <!--用户36-->
-    <test name="processTemplate">
-        <packages>
-            <package name="processTemplate"/>
-        </packages>
-    </test>
-
 </suite>

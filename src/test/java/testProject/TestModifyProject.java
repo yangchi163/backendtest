@@ -22,24 +22,27 @@ public class TestModifyProject {
 
     @Test(description = "修改前查看项目内容")
     public void testModifyProject01() throws Exception {
+        System.out.println("testModifyProject01");
         HttpClientResponse response = getProject.getProject(user,before);
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response, StatusCode.OK);
         AssertProject.getProject(response,before);
     }
 
     @Test(description = "修改项目信息")
     public void testModifyProject02() throws Exception {
+        System.out.println("testModifyProject02");
         HttpClientResponse response = modifyProject.modifyProect(user,before,after);
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.OK);
         AssertProject.modifyProject(response,after);
     }
 
     @Test(description = "修改后查看项目信息")
     public void testModifyProject03() throws Exception {
+        System.out.println("testModifyProject03");
         HttpClientResponse response = getProject.getProject(user,after);
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response, StatusCode.OK);
         AssertProject.getProject(response,after);
     }

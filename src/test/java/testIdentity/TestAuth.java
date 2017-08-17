@@ -17,27 +17,30 @@ public class TestAuth {
 
     @Test(description = "账号密码匹配")
     public void testAuth01() throws Exception {
+        System.out.println("testAuth01");
         User user = User.user1();
         HttpClientResponse response = auth.auth(user);
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response, StatusCode.OK);
         AssertIdentity.auth(response);
     }
 
     @Test(description = "账号密码不匹配")
     public void testAuth02() throws Exception {
+        System.out.println("testAuth02");
         User user = User.user1();
         HttpClientResponse response = auth.auth(user.getUserName(),user.getErrorPwd());
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.PARAMETERERROR);
         AssertCommon.returnException(response,"账号密码不匹配", ResultCode.ERROR_INVALID);
     }
 
     @Test(description = "账号未注册")
     public void testAuth03() throws Exception {
+        System.out.println("testAuth03");
         User user = User.user3();
         HttpClientResponse response = auth.auth(user);
-        System.out.println(response);
+        //System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.PARAMETERERROR);
         AssertCommon.returnException(response,"账号密码不匹配", ResultCode.ERROR_INVALID);
     }
