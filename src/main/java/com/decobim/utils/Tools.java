@@ -57,7 +57,7 @@ public class Tools {
             JsonObject obj = (JsonObject) it.next();
             if (obj.get("name").getAsString().equals(project.getName())){
                 JsonArray roles = obj.getAsJsonArray("roles");
-                assertTrue(roles.size() > 0 ,"has no role");
+                assertTrue(roles.size() > 0 ,"has no testRole");
                 JsonObject obj2 = (JsonObject) roles.get(0);
                 roleId = obj2.get("roleId").getAsString();
                 return roleId;

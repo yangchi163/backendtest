@@ -1,4 +1,4 @@
-package role;
+package testRole;
 
 import com.decobim.model.prepareForTest.User;
 import com.decobim.services.main.identity.Registry;

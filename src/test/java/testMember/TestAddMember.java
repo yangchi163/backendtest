@@ -1,4 +1,4 @@
-package member;
+package testMember;
 
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.Member;
@@ -40,7 +40,7 @@ public class TestAddMember {
     public void testAddMember01() throws Exception {
         System.out.println("testAddMember01");
         HttpClientResponse response = getMemberListOfProject.getMemberListOfProject(user,project);
-        //System.out.println(response);
+        System.out.println(response);
         AssertCommon.statusCode(response, StatusCode.OK);
         AssertMember.getMemberListOfProject(response,"1");
     }

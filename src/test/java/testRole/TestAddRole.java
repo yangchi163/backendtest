@@ -1,4 +1,4 @@
-package role;
+package testRole;
 
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.Role;
