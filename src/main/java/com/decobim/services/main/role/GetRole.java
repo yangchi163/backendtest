@@ -29,7 +29,7 @@ public class GetRole extends Base {
                 .toString();
         request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         request.setUrl(url);
-        System.out.println("request:" + request);
+        //System.out.println("request:" + request);
         return HttpClientUtil.doGet(request);
     }
 }

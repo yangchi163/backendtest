@@ -32,7 +32,7 @@ public class CreateInvitation extends Base {
         request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
         request.setUrl(url);
         request.setBody(gson.toJson(member));
-        System.out.println("request:" + request);
+        //System.out.println("request:" + request);
         return HttpClientUtil.doPost(request);
     }
 }

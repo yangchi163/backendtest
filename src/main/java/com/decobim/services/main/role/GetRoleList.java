@@ -37,7 +37,7 @@ public class GetRoleList extends Base {
                 .toString();
         request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         request.setUrl(url);
-        System.out.println(request);
+        //System.out.println(request);
         return HttpClientUtil.doGet(request);
     }
 }
