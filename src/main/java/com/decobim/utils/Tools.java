@@ -2,12 +2,14 @@ package com.decobim.utils;
 
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.Project;
+import com.decobim.model.prepareForTest.Role;
 import com.decobim.model.prepareForTest.User;
 import com.decobim.services.main.identity.Auth;
 import com.decobim.services.main.measurement.GetDbVersionInfo;
 import com.decobim.services.main.member.GetMemberListOfProject;
 import com.decobim.services.main.member.GetRoleListOfSbInProject;
 import com.decobim.services.main.project.ProjectLists;
+import com.decobim.services.main.role.GetRoleList;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -43,7 +45,7 @@ public class Tools {
         userId = object.get("userId").getAsString();
         return userId;
     }
-
+    //查询用户的角色id
     public static String getRoleId(User user,Project project) throws Exception {
         String roleId = null;
         ProjectLists projectLists = new ProjectLists();
@@ -121,6 +123,23 @@ public class Tools {
             }
         }
         return memberId;
+    }
+    //根据角色名查询roleId
+    public static String getRoleId (User user, Role role) throws Exception {
+        String roleId = null;
+        GetRoleList getRoleList = new GetRoleList();
+        HttpClientResponse response = getRoleList.getRoleList(getAuth(user),"1","10000");
+        JsonObject root = (JsonObject) parser.parse(response.getBody());
+        JsonArray list = root.getAsJsonArray("list");
+        Iterator<JsonElement> it = list.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            if(role.getName().equals(obj.get("name").getAsString())){
+                roleId = obj.get("roleId").getAsString();
+                return roleId;
+            }
+        }
+        return roleId;
     }
 
 }

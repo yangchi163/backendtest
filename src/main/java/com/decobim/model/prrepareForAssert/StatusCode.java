@@ -8,4 +8,5 @@ public class StatusCode {
     public static String PARAMETERERROR = "400";
     public static String UNAUTHORIZED = "401";
     public static String CONFLICT = "409";
+    public static String SERVERERROR = "500";
 }
