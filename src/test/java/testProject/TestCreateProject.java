@@ -66,7 +66,7 @@ public class TestCreateProject {
     public void testCreateProject05() throws Exception {
         System.out.println("testCreateProject05");
         HttpClientResponse response = addMeasurementInfo.addMeasurementInfo(user,project);
-        //System.out.println(response);
+        System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.OK);
         AssertProject.addMeasurementInfo(response,project, Tools.getMeasurementBillDbVersionId(user),
                 Tools.getMeasurementQuotaDbVersionId(user));

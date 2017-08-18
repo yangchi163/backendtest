@@ -90,10 +90,10 @@ public class Tools {
         GetDbVersionInfo getDbVersionInfo = new GetDbVersionInfo();
         HttpClientResponse response = getDbVersionInfo.getDbVersionInfo(user);
         JsonObject root = (JsonObject) parser.parse(response.getBody());
-        JsonArray billDbVersions = root.getAsJsonArray("billDbVersions");
+        JsonArray billDbVersions = root.getAsJsonArray("billVersions");
         assertTrue(billDbVersions.size() > 0, "没有清单库");
         JsonObject obj = (JsonObject) billDbVersions.get(0);
-        measurementBillDbVersionId = obj.get("id").getAsString();
+        measurementBillDbVersionId = obj.get("versionId").getAsString();
         return measurementBillDbVersionId;
     }
 
@@ -102,10 +102,10 @@ public class Tools {
         GetDbVersionInfo getDbVersionInfo = new GetDbVersionInfo();
         HttpClientResponse response = getDbVersionInfo.getDbVersionInfo(user);
         JsonObject root = (JsonObject) parser.parse(response.getBody());
-        JsonArray quotaDbVersions = root.getAsJsonArray("quotaDbVersions");
+        JsonArray quotaDbVersions = root.getAsJsonArray("quotaVersions");
         assertTrue(quotaDbVersions.size() > 0, "没有清单库");
         JsonObject obj = (JsonObject) quotaDbVersions.get(0);
-        measurementQuotaDbVersionId = obj.get("id").getAsString();
+        measurementQuotaDbVersionId = obj.get("versionId").getAsString();
         return measurementQuotaDbVersionId;
     }
 
