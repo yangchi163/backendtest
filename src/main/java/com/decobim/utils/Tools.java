@@ -1,20 +1,18 @@
 package com.decobim.utils;
 
 import com.decobim.model.http.HttpClientResponse;
-import com.decobim.model.prepareForTest.Project;
-import com.decobim.model.prepareForTest.Role;
-import com.decobim.model.prepareForTest.User;
+import com.decobim.model.prepareForTest.*;
 import com.decobim.services.main.identity.Auth;
 import com.decobim.services.main.measurement.GetDbVersionInfo;
 import com.decobim.services.main.member.GetMemberListOfProject;
 import com.decobim.services.main.member.GetRoleListOfSbInProject;
+import com.decobim.services.main.model.GetModelViews;
+import com.decobim.services.main.model.GetModels;
 import com.decobim.services.main.project.ProjectLists;
 import com.decobim.services.main.role.GetRoleList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 
+import java.io.*;
 import java.util.Iterator;
 
 import static org.testng.Assert.*;
@@ -24,6 +22,41 @@ import static org.testng.Assert.*;
 public class Tools {
 
     private static JsonParser parser = new JsonParser();
+
+    //读取文件内容，返回字符串
+    public static String getStringFromFile(String filePath) {
+        StringBuffer result = new StringBuffer();
+        BufferedReader bufferedReader = null;
+        InputStreamReader read = null;
+        try {
+            read = new InputStreamReader(new FileInputStream(filePath));
+            bufferedReader = new BufferedReader(read);
+            String lineTxt;
+            while ((lineTxt = bufferedReader.readLine()) != null) {
+                result.append(lineTxt);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+                read.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return result.toString();
+    }
+
+    //将json串反序列化成model
+    public static Model getModel(String filePath) {
+        Gson gson = new Gson();
+        Model model;
+        model = gson.fromJson(getStringFromFile(filePath), Model.class);
+        return model;
+    }
 
     public static String getAuth(User user) throws Exception {
         String token = null;
@@ -140,6 +173,38 @@ public class Tools {
             }
         }
         return roleId;
+    }
+
+    public static String getModelId (User user,Project project,Model model) throws Exception {
+        String modelId = null;
+        GetModels getModels = new GetModels();
+        HttpClientResponse response = getModels.getModels(user,project);
+        JsonArray root = (JsonArray) parser.parse(response.getBody());
+        Iterator<JsonElement> it = root.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            if(model.getModelExtraId().equals(obj.get("modelExtraId").getAsString())){
+                modelId = obj.get("modelId").getAsString();
+                return modelId;
+            }
+        }
+        return modelId;
+    }
+
+    public static String getModelViewId(User user, Project project, Model model, ModelView modelView) throws Exception {
+        String modelViewId = null;
+        GetModelViews getModelViews = new GetModelViews();
+        HttpClientResponse response = getModelViews.getModelViews(user,project,model);
+        JsonArray root = (JsonArray) parser.parse(response.getBody());
+        Iterator<JsonElement> it = root.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            if(modelView.getName().equals(obj.get("name").getAsString())){
+                modelViewId = obj.get("modelViewId").getAsString();
+                return modelViewId;
+            }
+        }
+        return modelViewId;
     }
 
 }

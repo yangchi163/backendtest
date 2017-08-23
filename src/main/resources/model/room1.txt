@@ -1,0 +1,160 @@
+{
+  "name": "room",
+  "projectId": 2696,
+  "modelExtraId": "model_2a4LqOi_L2kBmA68toAuWO",
+  "drawing2dUris": [
+      "string"
+    ],
+  "svf": {
+    "hash": "431083E473CD09CA965CC52979D4A9E1",
+    "name": "73c90485-91d9-487e-8520-06c309fd60c9/96277.svf",
+    "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/96277.svf",
+    "volume": 1667
+  },
+  "sdb": {
+    "hash": "A97BD61B29178261F7A3E44485C902CF",
+    "name": "73c90485-91d9-487e-8520-06c309fd60c9/model.sdb",
+    "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/model.sdb",
+    "volume": 59392
+  },
+  "list": [
+    {
+      "hash": "52100E12134F724D6591D3555BD79A13",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/0.pf",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/0.pf",
+      "volume": 4872
+    },
+    {
+      "hash": "B4F8A5960121C3F27CD9FE6284281D91",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/CameraDefinitions.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/CameraDefinitions.bin",
+      "volume": 139
+    },
+    {
+      "hash": "21EB43AAA9C52D836962BB074D6CBC02",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/CameraList.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/CameraList.bin",
+      "volume": 93
+    },
+    {
+      "hash": "E0A3E3E0FD0B1DB9D05417DB61932195",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/FragmentList.pack",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/FragmentList.pack",
+      "volume": 702
+    },
+    {
+      "hash": "1BC42992A14689857259161941F9F4D3",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/GeometryMetadata.pf",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/GeometryMetadata.pf",
+      "volume": 368
+    },
+    {
+      "hash": "883439B059249BC6840ED3FDC0600334",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/InstanceTree.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/InstanceTree.bin",
+      "volume": 376
+    },
+    {
+      "hash": "924C6AAD8C5831FDEFF680B358BD8D0F",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/LightDefinitions.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/LightDefinitions.bin",
+      "volume": 61
+    },
+    {
+      "hash": "924C6AAD8C5831FDEFF680B358BD8D0F",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/LightList.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/LightList.bin",
+      "volume": 61
+    },
+    {
+      "hash": "D41D8CD98F00B204E9800998ECF8427E",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/lmv.log",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/lmv.log",
+      "volume": 0
+    },
+    {
+      "hash": "B8A1DDBE4DEF0ED2ABEBD67BBDEAC4C7",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/Materials.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/Materials.json.gz",
+      "volume": 751
+    },
+    {
+      "hash": "DA48AF1AE72FB3278417A3C9437385F2",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_attrs.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_attrs.json.gz",
+      "volume": 1401
+    },
+    {
+      "hash": "5D9A2137EE583AEC271603D4DFCBFCF9",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_avs.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_avs.json.gz",
+      "volume": 815
+    },
+    {
+      "hash": "2F35BBC8BDD8AC81CCF435CF3095B7DA",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_ids.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_ids.json.gz",
+      "volume": 459
+    },
+    {
+      "hash": "FA608E3A8838425A6D17C15D4E92646D",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_offs.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_offs.json.gz",
+      "volume": 83
+    },
+    {
+      "hash": "49C767598FBE96B43A686985FFE9E58B",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_rcvs.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_rcvs.json.gz",
+      "volume": 22
+    },
+    {
+      "hash": "49955036DADE21B2F2B5514E299FCBD9",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_rcv_offs.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_rcv_offs.json.gz",
+      "volume": 26
+    },
+    {
+      "hash": "01C54183B26785367A1E38451D710A1B",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_vals.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_vals.json.gz",
+      "volume": 941
+    },
+    {
+      "hash": "195272EED724EE71DFD2A154CBD24BA0",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/objects_viewables.json.gz",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/objects_viewables.json.gz",
+      "volume": 30
+    },
+    {
+      "hash": "924C6AAD8C5831FDEFF680B358BD8D0F",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/Set.bin",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/Set.bin",
+      "volume": 61
+    },
+    {
+      "hash": "B3D23293AB2A8EA0154F3C69F80BDB73",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}.png",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}.png",
+      "volume": 6818
+    },
+    {
+      "hash": "78DE5370BC16966CA860CAA1700C75C4",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}1.png",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}1.png",
+      "volume": 4241
+    },
+    {
+      "hash": "3D828F6245D3A0CD8FF4956F5BD1A7EC",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}2.png",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}2.png",
+      "volume": 10415
+    },
+    {
+      "hash": "C21245D9973DA418A702068C3036D4D0",
+      "name": "73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}4.png",
+      "uri": "http://decobimtest.oss-cn-hangzhou.aliyuncs.com//73c90485-91d9-487e-8520-06c309fd60c9/thumbnail - 三维视图 - {三维}4.png",
+      "volume": 28590
+    }
+  ]
+}

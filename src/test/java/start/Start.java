@@ -3,7 +3,9 @@ package start;
 import com.decobim.database.Connection.ConnetionFactory;
 import com.decobim.database.mysql.Dao;
 import com.decobim.database.mysql.Table;
+import com.decobim.utils.file.ConfigManager;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +13,16 @@ import java.sql.SQLException;
 /**
  * Created by Administrator on 2017/8/17.
  */
-public class BeforeSuiteOfBackendTest {
+public class Start {
+    public static String model_room1;
+    public static String model_room2;
+
+    //读取属性文件
+    static {
+        ConfigManager manager = new ConfigManager("file.properties");
+        model_room1 = manager.getString("room1");
+        model_room2 = manager.getString("room2");
+    }
 
     @BeforeSuite(description = "清理decobim数据库")
     public void clearDecobim(){
@@ -30,5 +41,10 @@ public class BeforeSuiteOfBackendTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void start(){
+        System.out.println("test is running......");
     }
 }
