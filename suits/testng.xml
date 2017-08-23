@@ -36,4 +36,10 @@
             <package name="testMember"/>
         </packages>
     </test>
+    <!--注册用户20,21-->
+    <test name="testModel">
+        <packages>
+            <package name="testModel"/>
+        </packages>
+    </test>
 </suite>
