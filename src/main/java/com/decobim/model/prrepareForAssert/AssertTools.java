@@ -16,21 +16,7 @@ import static org.testng.Assert.assertTrue;
  * Created by Administrator on 2017/8/15.
  */
 public class AssertTools {
-    //验证模型树的结构是否正确
-    public static boolean verifyModelTree(JsonObject jsonObject){
-        Assert.assertNotEquals(jsonObject.get("key").toString(),"null");
-        Assert.assertNotEquals(jsonObject.get("title").toString(),"null");
-        Assert.assertEquals(jsonObject.get("children").isJsonArray(),true);
-        JsonArray children = jsonObject.getAsJsonArray("children");
-        if (children.size() > 0){
-            Iterator<JsonElement> it = children.iterator();
-            while (it.hasNext()){
-                JsonObject obj = (JsonObject) it.next();
-                verifyModelTree(obj);
-            }
-        }
-        return true;
-    }
+
     //验证一个String是否在list中
     public static boolean stringInList(String s,List<String> list){
         Iterator<String> it = list.iterator();

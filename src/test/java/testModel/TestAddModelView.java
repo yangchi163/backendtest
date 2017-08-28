@@ -73,7 +73,7 @@ public class TestAddModelView {
 
     @BeforeClass(description = "准备model和modelview")
     public void beforeClass() throws Exception {
-        room1 = Tools.getModel(Start.model_room1);
+        room1 = Start.room1;
         String projectId = Tools.getProjectId(user,project);
         String modelId = Tools.getModelId(user,project,room1);
         room1.setProjectId(projectId);

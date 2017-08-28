@@ -3,6 +3,7 @@ package com.decobim.utils;
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.*;
 import com.decobim.services.main.identity.Auth;
+import com.decobim.services.main.measurement.GetBidBillVersionInfos;
 import com.decobim.services.main.measurement.GetDbVersionInfo;
 import com.decobim.services.main.member.GetMemberListOfProject;
 import com.decobim.services.main.member.GetRoleListOfSbInProject;
@@ -205,6 +206,24 @@ public class Tools {
             }
         }
         return modelViewId;
+    }
+
+    public static String getBillVersionId(User user,Project project) throws Exception {
+        String billId = null;
+        long timestamp = 0;
+        GetBidBillVersionInfos getBidBillVersionInfos = new GetBidBillVersionInfos();
+        HttpClientResponse response = getBidBillVersionInfos.getBidBillVersionInfos(user, project);
+        JsonParser parser = new JsonParser();
+        JsonObject root = (JsonObject) parser.parse(response.getBody());
+        JsonArray versionInfos = root.getAsJsonArray("versionInfos");
+        Iterator<JsonElement> it = versionInfos.iterator();
+        while (it.hasNext()) {
+            JsonObject obj = (JsonObject) it.next();
+            if (obj.get("timestamp").getAsLong() > timestamp) {
+                billId = obj.get("versionId").getAsString();
+            }
+        }
+        return billId;
     }
 
 }
