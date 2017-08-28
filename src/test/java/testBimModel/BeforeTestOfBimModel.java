@@ -1,4 +1,4 @@
-package testModel;
+package testBimModel;
 
 import com.decobim.model.prepareForTest.Model;
 import com.decobim.model.prepareForTest.Project;
@@ -12,36 +12,28 @@ import org.testng.annotations.Test;
 import start.Start;
 
 /**
- * Created by Administrator on 2017/8/21.
+ * Created by Administrator on 2017/8/23.
  */
-public class BeforeTestOfModel {
+public class BeforeTestOfBimModel {
     private Registry registry = new Registry();
     private CreateProject createProject = new CreateProject();
     private AddModel addModel = new AddModel();
+    private User user = User.user22();
     private Project project = Project.jingjiLake();
+    private Model room1;
 
     @BeforeTest
     public void beforeTest01() throws Exception {
-        User user = User.user20();
         registry.registry(user);
         createProject.createProject(user,project);
-    }
-
-    @BeforeTest
-    public void beforeTest02() throws Exception {
-        User user = User.user21();
-        registry.registry(user);
-        createProject.createProject(user,project);
-        //准备model
-        Model room1 = Start.room1;
-        //设置modelId
+        //准备模型，给模型设置projectId
+        room1 = Start.room1;
         room1.setProjectId(Tools.getProjectId(user,project));
-        //导入模型
-        addModel.addModel(user,project, room1);
+        addModel.addModel(user,project,room1);
     }
 
     @Test
-    public void beforeTestOfMember(){
-        System.out.println("BeforeTestOfModel");
+    public void beforeTestOfBimModel() throws Exception {
+        System.out.println("BeforeTestOfBimModel");
     }
 }

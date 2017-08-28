@@ -3,6 +3,8 @@ package start;
 import com.decobim.database.Connection.ConnetionFactory;
 import com.decobim.database.mysql.Dao;
 import com.decobim.database.mysql.Table;
+import com.decobim.model.prepareForTest.Model;
+import com.decobim.utils.Tools;
 import com.decobim.utils.file.ConfigManager;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -14,14 +16,16 @@ import java.sql.SQLException;
  * Created by Administrator on 2017/8/17.
  */
 public class Start {
-    public static String model_room1;
-    public static String model_room2;
+    public static Model room1;
+    public static Model room2;
 
     //读取属性文件
     static {
         ConfigManager manager = new ConfigManager("file.properties");
-        model_room1 = manager.getString("room1");
-        model_room2 = manager.getString("room2");
+        String model_room1 = manager.getString("room1");
+        String model_room2 = manager.getString("room2");
+        room1 = Tools.getModel(model_room1);
+        room2 = Tools.getModel(model_room2);
     }
 
     @BeforeSuite(description = "清理decobim数据库")

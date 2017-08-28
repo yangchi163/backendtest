@@ -126,10 +126,10 @@ public class TestAddModel {
     public void beforeClass() throws Exception {
         String projectId = Tools.getProjectId(user,project);
         //给模型设置projectid
-        room1 = Tools.getModel(Start.model_room1);
+        room1 = Start.room1;
         room1.setProjectId(projectId);
         //给模型设置projectid
-        room2 = Tools.getModel(Start.model_room2);
+        room2 = Start.room2;
         room2.setProjectId(projectId);
     }
 

@@ -5,6 +5,7 @@ import com.decobim.model.url.UrlHost;
 import com.decobim.model.url.UrlSchema;
 import com.google.gson.Gson;
 import org.apache.http.client.utils.URIBuilder;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class Base {
     public URIBuilder uriBuilder;
     public Gson gson;
     public HttpClientRequest request;
-    public Map<String,String> bodyMap;
+    public Map bodyMap;
 
     public Base() {
         uriBuilder = new URIBuilder()
@@ -24,6 +25,7 @@ public class Base {
                 .setHost(UrlHost.host());
         gson = new Gson();
         request = new HttpClientRequest();
-        bodyMap = new HashMap<>();
+        bodyMap = new HashMap();
     }
+
 }
