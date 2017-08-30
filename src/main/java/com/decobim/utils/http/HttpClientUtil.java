@@ -12,7 +12,6 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,36 +21,36 @@ import java.util.Map;
 public class HttpClientUtil {
     private static CloseableHttpClient client;
 
-    public static HttpClientResponse doGet(HttpClientRequest request) {
+    public static HttpClientResponse doGet(HttpClientRequest request,String methodName) {
         init();
         HttpUriRequest httpRequest = new HttpGet(request.getUrl());
-        return sendRequest(httpRequest,request);
+        return sendRequest(httpRequest,request,methodName);
     }
 
-    public static HttpClientResponse doPost(HttpClientRequest request){
+    public static HttpClientResponse doPost(HttpClientRequest request,String methodName){
         init();
         HttpUriRequest httpRequest = new HttpPost(request.getUrl());
-        return sendRequest(httpRequest,request);
+        return sendRequest(httpRequest,request,methodName);
     }
 
-    public static HttpClientResponse doPut(HttpClientRequest request){
+    public static HttpClientResponse doPut(HttpClientRequest request,String methodName){
         init();
         HttpUriRequest httpRequest = new HttpPut(request.getUrl());
-        return sendRequest(httpRequest,request);
+        return sendRequest(httpRequest,request,methodName);
     }
 
-    public static HttpClientResponse doDelete(HttpClientRequest request){
+    public static HttpClientResponse doDelete(HttpClientRequest request,String methodName){
         init();
         HttpUriRequest httpRequest = new HttpDelete(request.getUrl());
-        return sendRequest(httpRequest,request);
+        return sendRequest(httpRequest,request,methodName);
     }
 
     private static void init() {
         client = HttpClientBuilder.create().build();
-        System.out.println("client初始化成功");
+        //System.out.println("client初始化成功");
     }
 
-    private static HttpClientResponse sendRequest(HttpUriRequest httpRequest, HttpClientRequest request) {
+    private static HttpClientResponse sendRequest(HttpUriRequest httpRequest, HttpClientRequest request,String methodName) {
         //初始化response，用来接收返回结果
         HttpClientResponse httpClientResponse = new HttpClientResponse();
         String url = request.getUrl();
@@ -64,7 +63,10 @@ public class HttpClientUtil {
                 ((HttpEntityEnclosingRequestBase) httpRequest).setEntity(new StringEntity(request.getBody(),"utf-8"));
         }
         try {
+            long before = System.currentTimeMillis();
             HttpResponse httpResponse = client.execute(httpRequest);
+            long after = System.currentTimeMillis();
+            System.out.println(methodName + ":" + (after - before));
             //获得状态码
             httpClientResponse.setStatusCode(String.valueOf(httpResponse.getStatusLine().getStatusCode()));
             //获得headers
@@ -89,7 +91,7 @@ public class HttpClientUtil {
     private static void close() {
         try {
             client.close();
-            System.out.println("client已关闭");
+            //System.out.println("client已关闭");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("client关闭失败");

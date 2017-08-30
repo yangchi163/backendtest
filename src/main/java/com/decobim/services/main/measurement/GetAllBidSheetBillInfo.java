@@ -35,6 +35,7 @@ public class GetAllBidSheetBillInfo extends Base {
         bodyMap.put("versionId",versionId);
         request.setBody(gson.toJson(bodyMap));
         request.setUrl(url);
-        return HttpClientUtil.doPost(request);
+        System.out.println(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

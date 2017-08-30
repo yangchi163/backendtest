@@ -40,6 +40,6 @@ public class GetMemberListOfProject extends Base{
         request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
         request.setUrl(url);
         System.out.println(request);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

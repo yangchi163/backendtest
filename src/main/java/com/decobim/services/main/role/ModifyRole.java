@@ -32,6 +32,6 @@ public class ModifyRole extends Base {
         request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         request.setUrl(url);
         request.setBody(gson.toJson(role));
-        return HttpClientUtil.doPut(request);
+        return HttpClientUtil.doPut(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

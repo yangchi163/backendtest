@@ -1,10 +1,7 @@
 package testMeasurement;
 
 import com.decobim.model.http.HttpClientResponse;
-import com.decobim.model.prepareForTest.BidSheetBill;
-import com.decobim.model.prepareForTest.GlobalVariable;
-import com.decobim.model.prepareForTest.Project;
-import com.decobim.model.prepareForTest.User;
+import com.decobim.model.prepareForTest.*;
 import com.decobim.model.prrepareForAssert.StatusCode;
 import com.decobim.services.assertResult.AssertCommon;
 import com.decobim.services.assertResult.AssertMeasurement;
@@ -13,6 +10,8 @@ import com.decobim.utils.Tools;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/23.
@@ -25,6 +24,9 @@ public class TestImportBidSheetBillInfo {
     private GetBidSheetBillSubParts getBidSheetBillSubParts = new GetBidSheetBillSubParts();
     private GetAllBidSheetBillInfo getAllBidSheetBillInfo = new GetAllBidSheetBillInfo();
     private GetBidSheetBillInfo getBidSheetBillInfo = new GetBidSheetBillInfo();
+    private FuzzyBidSheetBillInfo fuzzyBidSheetBillInfo = new FuzzyBidSheetBillInfo();
+    private GetStandardBillCodes getStandardBillCodes = new GetStandardBillCodes();
+    private GetBidSheetBillInfosByIds getBidSheetBillInfosByIds = new GetBidSheetBillInfosByIds();
     private User user = User.user32();
     private Project project = Project.jingjiLake();
     private BidSheetBill zhonghang = BidSheetBill.zhongHang();
@@ -116,6 +118,30 @@ public class TestImportBidSheetBillInfo {
         HttpClientResponse response = getBidSheetBillInfo.getBidSheetBillInfo(user,project,"1","10");
         System.out.println(response);
         AssertCommon.statusCode(response,StatusCode.OK);
+    }
+
+    @Test(enabled = false,description = "模糊查询投标算量清单信息")
+    public void testImportBidSheetBillInfo11() throws Exception {
+        HttpClientResponse response = fuzzyBidSheetBillInfo.fuzzyBidSheetBillInfo(user,project,"","1","10");
+        System.out.println(response);
+        AssertCommon.statusCode(response,StatusCode.OK);
+    }
+
+    @Test(description = "查找某项目下的清单所对应的国标清单的清单编号和清单中的项目名称")
+    public void testImportBidSheetBillInfo12() throws Exception {
+        HttpClientResponse response = getStandardBillCodes.getStandardBillCodes(user,project);
+        System.out.println(response);
+        AssertCommon.statusCode(response,StatusCode.OK);
+        AssertMeasurement.getStandardBillCodes(response);
+    }
+
+    @Test(description = "根据投标清单id列表查询投标算量清单信息")
+    public void testImportBidSheetBillInfo13() throws Exception {
+        List<String> list = Tools.getBidSheetBillInfoIds(user,project);
+        HttpClientResponse response = getBidSheetBillInfosByIds.getBidSheetBillInfosByIds(user,project,list);
+        System.out.println(response);
+        AssertCommon.statusCode(response,StatusCode.OK);
+        AssertMeasurement.getBidSheetBillInfosByIds(response,list,Tools.getBillVersionId(user,project));
     }
 
     @BeforeClass(description = "给清单设置projectId")

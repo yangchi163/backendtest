@@ -45,6 +45,6 @@ public class GetBidSheetBillInfoIds extends Base{
         bodyMap.put("elementIds",elementIds);
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

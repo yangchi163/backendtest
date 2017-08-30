@@ -40,6 +40,6 @@ public class AddModel extends Base{
         }
         request.setUrl(url);
         request.setBody(gson.toJson(model));
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

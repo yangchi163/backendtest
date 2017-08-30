@@ -32,6 +32,6 @@ public class ModifyProject extends Base {
         }
         request.setUrl(url);
         request.setBody(gson.toJson(after));
-        return HttpClientUtil.doPut(request);
+        return HttpClientUtil.doPut(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

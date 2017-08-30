@@ -28,7 +28,7 @@ public class GetUsers extends Base {
         headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
         request.setHeaders(headerMap);
         request.setUrl(url);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
     public HttpClientResponse getUsers(User user,String pageNum,String pageSize) throws Exception {
@@ -43,6 +43,6 @@ public class GetUsers extends Base {
         headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
         request.setHeaders(headerMap);
         request.setUrl(url);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

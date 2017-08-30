@@ -35,7 +35,7 @@ public class AddMeasurementInfo extends Base {
         bodyMap.put("measurementQuotaDbVersionId",measurementQuotaDbVersionId);
         request.setBody(gson.toJson(bodyMap));
         request.setUrl(url);
-        return HttpClientUtil.doPut(request);
+        return HttpClientUtil.doPut(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
 }

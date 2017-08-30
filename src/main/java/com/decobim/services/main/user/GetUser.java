@@ -32,7 +32,7 @@ public class GetUser extends Base{
         headerMap.put(HttpHeadersKey.ROLEID,roleId);
         request.setHeaders(headerMap);
         request.setUrl(url);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
 }

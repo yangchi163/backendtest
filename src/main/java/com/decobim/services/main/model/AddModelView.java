@@ -40,6 +40,6 @@ public class AddModelView extends Base{
         }
         request.setUrl(url);
         request.setBody(gson.toJson(modelView));
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

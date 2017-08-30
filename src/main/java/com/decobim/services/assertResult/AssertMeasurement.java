@@ -2,11 +2,14 @@ package com.decobim.services.assertResult;
 
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.BidSheetBill;
+import com.decobim.model.prrepareForAssert.AssertTools;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.testng.Assert.*;
 /**
@@ -97,23 +100,51 @@ public class AssertMeasurement extends AssertBase{
         Iterator<JsonElement> it = obidSheetBillInfos.iterator();
         while (it.hasNext()){
             JsonObject obj = (JsonObject) it.next();
-            assertTrue(obj.has("bidSheetBillInfoId"),"no bidSheetBillInfoId");
-            assertEquals(obj.get("versionId").getAsString(),billVersionId,"versionId error");
-            assertTrue(obj.has("elementIds"),"no elementIds");
-            assertTrue(obj.has("name"),"no name");
-            assertTrue(obj.has("encoding"),"no encoding");
-            assertTrue(obj.has("billDetailSN"),"no billDetailSN");
-            assertTrue(obj.has("billDetailId"),"no billDetailId");
-            assertTrue(obj.has("billTrait"),"no billTrait");
-            assertTrue(obj.has("geoRegion"),"no geoRegion");
-            assertTrue(obj.has("subPart"),"no subPart");
-            assertTrue(obj.has("unit"),"no unit");
-            assertTrue(obj.has("bidSheetQuantities"),"no bidSheetQuantities");
-            assertTrue(obj.has("bidSheetQuotaInfos"),"no bidSheetQuotaInfos");
-            assertTrue(obj.has("replacementName"),"no replacementName");
-            assertTrue(obj.has("modelQuantity"),"no modelQuantity");
-            assertTrue(obj.has("customizedModelBillInfo"),"no customizedModelBillInfo");
-            assertTrue(obj.has("timestamp"),"no timestamp");
+            verifyBidSheetBillInfo(obj,billVersionId);
         }
+    }
+
+    //验证清单结构
+    private static void verifyBidSheetBillInfo(JsonObject obj,String billVersionId){
+        assertTrue(obj.has("bidSheetBillInfoId"),"no bidSheetBillInfoId");
+        assertEquals(obj.get("versionId").getAsString(),billVersionId,"versionId error");
+        assertTrue(obj.has("elementIds"),"no elementIds");
+        assertTrue(obj.has("name"),"no name");
+        assertTrue(obj.has("encoding"),"no encoding");
+        assertTrue(obj.has("billDetailSN"),"no billDetailSN");
+        assertTrue(obj.has("billDetailId"),"no billDetailId");
+        assertTrue(obj.has("billTrait"),"no billTrait");
+        assertTrue(obj.has("geoRegion"),"no geoRegion");
+        assertTrue(obj.has("subPart"),"no subPart");
+        assertTrue(obj.has("unit"),"no unit");
+        assertTrue(obj.has("bidSheetQuantities"),"no bidSheetQuantities");
+        assertTrue(obj.has("bidSheetQuotaInfos"),"no bidSheetQuotaInfos");
+        assertTrue(obj.has("replacementName"),"no replacementName");
+        assertTrue(obj.has("modelQuantity"),"no modelQuantity");
+        assertTrue(obj.has("customizedModelBillInfo"),"no customizedModelBillInfo");
+        assertTrue(obj.has("timestamp"),"no timestamp");
+    }
+
+    public static void getStandardBillCodes(HttpClientResponse response){
+        JsonArray root = (JsonArray) parser.parse(response.getBody());
+        Iterator<JsonElement> it = root.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            assertTrue(obj.has("billDetailSN"),"no billDetailSN");
+            assertTrue(obj.has("projectName"),"no projectName");
+        }
+    }
+
+    public static void getBidSheetBillInfosByIds(HttpClientResponse response, List<String> list,String billVersionId){
+        List<String> resultList = new ArrayList<>();
+        JsonArray root = (JsonArray) parser.parse(response.getBody());
+        Iterator<JsonElement> it = root.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            verifyBidSheetBillInfo(obj,billVersionId);
+            resultList.add(obj.get("bidSheetBillInfoId").getAsString());
+        }
+        //验证bidSheetBillInfoId相同
+        AssertTools.listEqualsList(list,resultList);
     }
 }

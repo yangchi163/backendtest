@@ -38,6 +38,6 @@ public class GetRoleList extends Base {
         request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         request.setUrl(url);
         //System.out.println(request);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }
