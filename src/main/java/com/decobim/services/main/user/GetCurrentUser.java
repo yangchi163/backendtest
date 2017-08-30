@@ -26,7 +26,7 @@ public class GetCurrentUser extends Base{
                 .toString();
         request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         request.setUrl(url);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
     public HttpClientResponse getCurrentUser(User user) throws Exception {
         return getCurrentUser(Tools.getAuth(user));

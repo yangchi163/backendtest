@@ -37,6 +37,6 @@ public class GetBidBillVersionInfos extends Base{
         bodyMap.put("projectId",projectId);
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

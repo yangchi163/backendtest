@@ -37,6 +37,6 @@ public class GetModels extends Base {
             request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
         }
         request.setUrl(url);
-        return HttpClientUtil.doGet(request);
+        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

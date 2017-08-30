@@ -33,7 +33,7 @@ public class Registry extends Base {
         String body = gson.toJson(bodyMap);
         request.setUrl(url);
         request.setBody(body);
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
 }

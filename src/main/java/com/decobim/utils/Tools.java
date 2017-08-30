@@ -3,6 +3,7 @@ package com.decobim.utils;
 import com.decobim.model.http.HttpClientResponse;
 import com.decobim.model.prepareForTest.*;
 import com.decobim.services.main.identity.Auth;
+import com.decobim.services.main.measurement.GetAllBidSheetBillInfo;
 import com.decobim.services.main.measurement.GetBidBillVersionInfos;
 import com.decobim.services.main.measurement.GetDbVersionInfo;
 import com.decobim.services.main.member.GetMemberListOfProject;
@@ -14,7 +15,9 @@ import com.decobim.services.main.role.GetRoleList;
 import com.google.gson.*;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import static org.testng.Assert.*;
 /**
@@ -64,7 +67,7 @@ public class Tools {
         Auth auth = new Auth();
         HttpClientResponse response = auth.auth(user);
         JsonObject object = (JsonObject) parser.parse(response.getBody());
-        System.out.println(object);
+        //System.out.println(object);
         assertTrue(object.has("token"),"no token");
         token = object.get("token").getAsString();
         return token;
@@ -224,6 +227,26 @@ public class Tools {
             }
         }
         return billId;
+    }
+
+    //获取清单明细id列表
+    public static List<String> getBidSheetBillInfoIds(User user, Project project) throws Exception {
+        List<String> bidSheetBillInfoIds = new ArrayList<>();
+        int i = 0;
+        GetAllBidSheetBillInfo getAllBidSheetBillInfo = new GetAllBidSheetBillInfo();
+        HttpClientResponse response = getAllBidSheetBillInfo.getAllBidSheetBillInfo(user, project);
+        JsonObject root = (JsonObject) parser.parse(response.getBody());
+        JsonArray obidSheetBillInfos = root.getAsJsonArray("obidSheetBillInfos");
+        Iterator<JsonElement> it = obidSheetBillInfos.iterator();
+        while (it.hasNext()) {
+            if (i > 2) {
+                return bidSheetBillInfoIds;
+            }
+            JsonObject obj = (JsonObject) it.next();
+            bidSheetBillInfoIds.add(obj.get("bidSheetBillInfoId").getAsString());
+            i++;
+        }
+        return bidSheetBillInfoIds;
     }
 
 }

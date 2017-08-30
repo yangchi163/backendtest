@@ -31,6 +31,6 @@ public class DeleteProject extends Base {
             request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
         }
         request.setUrl(url);
-        return HttpClientUtil.doDelete(request);
+        return HttpClientUtil.doDelete(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

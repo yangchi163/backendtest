@@ -33,7 +33,7 @@ public class ModifyUser extends Base{
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));
         System.out.println(request);
-        return HttpClientUtil.doPut(request);
+        return HttpClientUtil.doPut(request,Thread.currentThread().getStackTrace()[1].getMethodName());
 
     }
 }

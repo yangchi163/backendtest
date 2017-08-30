@@ -42,4 +42,10 @@
             <package name="testModel"/>
         </packages>
     </test>
+    <!--注册用户32,33-->
+    <test name="testMeasurement">
+        <packages>
+            <package name="testMeasurement"/>
+        </packages>
+    </test>
 </suite>

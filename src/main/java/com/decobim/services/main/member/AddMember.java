@@ -35,6 +35,6 @@ public class AddMember extends Base {
         request.setBody(gson.toJson(addMember));
         request.setUrl(url);
         //System.out.println(request);
-        return HttpClientUtil.doPost(request);
+        return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }
