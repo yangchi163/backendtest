@@ -30,8 +30,7 @@ public class GetRoleListOfProject extends Base {
                 .setPath(MemberModule.getRoleListOfProject(projectId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

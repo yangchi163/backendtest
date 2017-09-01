@@ -26,6 +26,7 @@ public class Auth extends Base {
             bodyMap.put("password",password);
         }
         request.setUrl(url);
+        request.setHeaders();
         request.setBody(gson.toJson(bodyMap));
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

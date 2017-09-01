@@ -31,6 +31,7 @@ public class Registry extends Base {
             bodyMap.put("password",password);
         }
         String body = gson.toJson(bodyMap);
+        request.setHeaders();
         request.setUrl(url);
         request.setBody(body);
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());

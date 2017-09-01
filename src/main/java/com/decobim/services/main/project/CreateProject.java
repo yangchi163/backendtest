@@ -29,9 +29,7 @@ public class CreateProject extends Base{
                 .setPath(ProjectModule.createProject())
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
+        request.setHeaders(token);
         request.setUrl(url);
         request.setBody(gson.toJson(project));
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());

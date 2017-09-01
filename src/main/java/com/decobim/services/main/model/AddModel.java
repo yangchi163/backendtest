@@ -32,12 +32,7 @@ public class AddModel extends Base{
                 .setPath(ModelModule.addModel(projectId))
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
-        if(roleId != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         request.setBody(gson.toJson(model));
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());

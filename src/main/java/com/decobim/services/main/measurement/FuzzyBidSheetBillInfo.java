@@ -33,8 +33,7 @@ public class FuzzyBidSheetBillInfo extends Base {
                 .setPath(MeasurementModule.fuzzyBidSheetBillInfo())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION, token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID, roleId);
+        request.setHeaders(token,roleId);
         bodyMap.put("projectId", projectId);
         bodyMap.put("versionId", versionId);
         bodyMap.put("name", name);

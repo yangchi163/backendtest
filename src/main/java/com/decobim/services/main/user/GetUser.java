@@ -8,6 +8,7 @@ import com.decobim.services.main.Base;
 import com.decobim.utils.Tools;
 import com.decobim.utils.http.HttpClientUtil;
 
+import java.net.URISyntaxException;
 import java.util.Map;
 
 /**
@@ -20,19 +21,16 @@ public class GetUser extends Base{
     public GetUser(){}
 
     public HttpClientResponse getUser(User user,User other)throws Exception{
-        String userId = Tools.getUserId(other);
-        String token = Tools.getAuth(user);
-        String roleId = "100";
+        return getUser(Tools.getAuth(user),"100",Tools.getUserId(other));
+    }
+
+    public HttpClientResponse getUser(String token,String roleId,String userId) throws Exception {
         String url = uriBuilder
                 .setPath(UserModule.getUser(userId))
                 .build()
                 .toString();
-        Map<String,String> headerMap = request.getHeaders();
-        headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
-        headerMap.put(HttpHeadersKey.ROLEID,roleId);
-        request.setHeaders(headerMap);
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
-
 }

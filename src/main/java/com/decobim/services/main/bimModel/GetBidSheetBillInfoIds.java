@@ -34,12 +34,7 @@ public class GetBidSheetBillInfoIds extends Base{
                 .setPath(BimModelModule.getBidSheetBillInfoIds())
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
-        if(token != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         bodyMap.put("projectId",projectId);
         bodyMap.put("modelId",modelId);
         bodyMap.put("elementIds",elementIds);

@@ -30,8 +30,7 @@ public class GetBillModelTree extends Base {
                 .setPath(MeasurementModule.getBillModelTree())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         bodyMap.put("projectId",projectId);
         bodyMap.put("modelId",modelId);
         bodyMap.put("versionId",billVersionId);

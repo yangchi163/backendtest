@@ -27,12 +27,12 @@ public class AddRole extends Base{
         return addRole(Tools.getAuth(user),role);
     }
 
-    public HttpClientResponse addRole(String token, Role role) throws URISyntaxException {
+    public HttpClientResponse addRole(String token, Role role) throws Exception {
         String url = uriBuilder
                 .setPath(RoleModule.addRole())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        request.setHeaders(token);
         request.setUrl(url);
         request.setBody(gson.toJson(role));
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());

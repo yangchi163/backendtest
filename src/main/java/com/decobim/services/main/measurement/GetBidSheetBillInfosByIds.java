@@ -32,8 +32,7 @@ public class GetBidSheetBillInfosByIds extends Base {
                 .setPath(MeasurementModule.getBidSheetBillInfosByIds())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         bodyMap.put("projectId",projectId);
         bodyMap.put("versionId",billVersionId);
         bodyMap.put("bidSheetBillInfoIds",bidSheetBillInfoIds);

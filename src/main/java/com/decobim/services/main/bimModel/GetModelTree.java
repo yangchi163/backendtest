@@ -32,12 +32,7 @@ public class GetModelTree extends Base{
                 .setPath(BimModelModule.getModelTree(projectId,modelId))
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
-        if (roleId != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

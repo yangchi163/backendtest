@@ -29,9 +29,7 @@ public class GetDbVersionInfo extends Base {
                 .setPath(MeasurementModule.getDbVersionInfo())
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

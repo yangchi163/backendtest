@@ -24,17 +24,12 @@ public class GetProject extends Base{
         return getProject(Tools.getAuth(user),Tools.getRoleId(user,project),Tools.getProjectId(user,project));
     }
 
-    public HttpClientResponse getProject(String token,String roleId,String projectId) throws URISyntaxException {
+    public HttpClientResponse getProject(String token,String roleId,String projectId) throws Exception {
         String url = uriBuilder
                 .setPath(ProjectModule.getProject(projectId))
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
-        if (roleId != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

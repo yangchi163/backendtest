@@ -30,7 +30,7 @@ public class DeleteRole extends Base {
                 .setPath(RoleModule.deleteRole(roleId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doDelete(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

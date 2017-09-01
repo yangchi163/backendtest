@@ -31,8 +31,7 @@ public class GetStandardBillCodes extends Base {
                 .setPath(MeasurementModule.getStandardBillCodes(projectId,billDbVersionId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         System.out.println(request);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());

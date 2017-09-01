@@ -7,14 +7,15 @@ import com.decobim.services.main.measurement.GetAllBidSheetBillInfo;
 import com.decobim.services.main.measurement.GetBidBillVersionInfos;
 import com.decobim.services.main.measurement.GetDbVersionInfo;
 import com.decobim.services.main.member.GetMemberListOfProject;
-import com.decobim.services.main.member.GetRoleListOfSbInProject;
 import com.decobim.services.main.model.GetModelViews;
 import com.decobim.services.main.model.GetModels;
+import com.decobim.services.main.process.GetProcess;
 import com.decobim.services.main.project.ProjectLists;
 import com.decobim.services.main.role.GetRoleList;
 import com.google.gson.*;
 
 import java.io.*;
+import java.lang.Process;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -249,4 +250,19 @@ public class Tools {
         return bidSheetBillInfoIds;
     }
 
+    public static String getProcessId(User user, Project project, String bidSheetBillInfoIds,
+                                      com.decobim.model.prepareForTest.Process process) throws Exception {
+        String processId = null;
+        GetProcess getProcess = new GetProcess();
+        HttpClientResponse response = getProcess.getProcess(user,project,bidSheetBillInfoIds);
+        JsonArray root = (JsonArray) parser.parse(response.getBody());
+        Iterator<JsonElement> it = root.iterator();
+        while (it.hasNext()){
+            JsonObject obj = (JsonObject) it.next();
+            if (obj.get("name").getAsString().equals(process.getName())){
+                processId = obj.get("processId").getAsString();
+            }
+        }
+        return processId;
+    }
 }

@@ -30,12 +30,7 @@ public class ImportBidSheetBillInfo extends Base {
                 .setPath(MeasurementModule.importBidSheetBillInfo())
                 .build()
                 .toString();
-        if(token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
-        if (roleId != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         request.setBody(gson.toJson(bidSheetBill));
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());

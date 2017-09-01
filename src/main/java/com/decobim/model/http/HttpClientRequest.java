@@ -12,8 +12,26 @@ public class HttpClientRequest {
     private String body;
 
     public HttpClientRequest() {
+    }
+    //需要传入Content-Type
+    public void setHeaders() throws Exception {
         headers = new HashMap<>();
-        headers.put("Content-Type","application/json");
+        headers.put(HttpHeadersKey.CONTENTTYPE,"application/json");
+    }
+    //需要传入Content-Type，Authorization
+    public void setHeaders(String token) throws Exception {
+        setHeaders();
+        headers.put(HttpHeadersKey.AUTHORIZATION, token);
+    }
+    //需要传入Content-Type，Authorization，roleId
+    public void setHeaders(String token,String roleId) throws Exception {
+        setHeaders();
+        if (token != null){
+            headers.put(HttpHeadersKey.AUTHORIZATION, token);
+        }
+        if (roleId != null){
+            headers.put(HttpHeadersKey.ROLEID,roleId);
+        }
     }
 
     public String getUrl() {
@@ -26,10 +44,6 @@ public class HttpClientRequest {
 
     public Map<String, String> getHeaders() {
         return headers;
-    }
-
-    public void setHeaders(Map<String, String> headers) {
-        this.headers = headers;
     }
 
     public String getBody() {
