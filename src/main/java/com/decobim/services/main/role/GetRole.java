@@ -27,7 +27,7 @@ public class GetRole extends Base {
                 .setPath(RoleModule.getRole(roleId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        request.setHeaders(token);
         request.setUrl(url);
         //System.out.println("request:" + request);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());

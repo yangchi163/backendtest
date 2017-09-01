@@ -12,7 +12,7 @@ import com.decobim.utils.http.HttpClientUtil;
 
 /**
  * 创建邀请
- * http://test.api.decobim.com/v1/project/{projectId}/invitations
+ * http://test.api.decobim.com/v1/projects/{projectId}/invitations
  * post
  * Created by Administrator on 2017/8/15.
  */
@@ -28,11 +28,10 @@ public class CreateInvitation extends Base {
                 .setPath(MemberModule.createInvitation(member.getProjectId()))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         request.setBody(gson.toJson(member));
-        //System.out.println("request:" + request);
+        System.out.println("request:" + request);
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

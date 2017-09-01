@@ -28,9 +28,7 @@ public class AddMeasurementInfo extends Base {
                 .setPath(ProjectModule.addMeasurementInfo(projectId))
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
+        request.setHeaders(token);
         bodyMap.put("measurementBillDbVersionId",measurementBillDbVersionId);
         bodyMap.put("measurementQuotaDbVersionId",measurementQuotaDbVersionId);
         request.setBody(gson.toJson(bodyMap));

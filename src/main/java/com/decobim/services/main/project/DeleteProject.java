@@ -27,9 +27,7 @@ public class DeleteProject extends Base {
                 .setPath(ProjectModule.deleteProject(projectId))
                 .build()
                 .toString();
-        if(token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doDelete(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

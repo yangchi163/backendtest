@@ -29,13 +29,11 @@ public class GetAllBidSheetBillInfo extends Base {
                 .setPath(MeasurementModule.getAllBidSheetBillInfo())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         bodyMap.put("projectId",projectId);
         bodyMap.put("versionId",versionId);
         request.setBody(gson.toJson(bodyMap));
         request.setUrl(url);
-        System.out.println(request);
         return HttpClientUtil.doPost(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 }

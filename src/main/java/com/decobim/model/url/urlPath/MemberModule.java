@@ -37,7 +37,7 @@ public class MemberModule {
     }
 
     public static String createInvitation(String projectId){
-        String url = "/v1/project/{0}/invitations";
+        String url = "/v1/projects/{0}/invitations";
         url = MessageFormat.format(url,projectId);
         return url;
     }

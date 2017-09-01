@@ -19,30 +19,17 @@ public class GetUsers extends Base {
     public GetUsers(){}
 
     public HttpClientResponse getUsers(User user)throws Exception{
-        String token = Tools.getAuth(user);
+        return getUsers(Tools.getAuth(user));
+    }
+
+    public HttpClientResponse getUsers(String token)throws Exception{
         String url = uriBuilder
                 .setPath(UserModule.getUsers())
                 .build()
                 .toString();
-        Map<String,String> headerMap = request.getHeaders();
-        headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
-        request.setHeaders(headerMap);
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
 
-    public HttpClientResponse getUsers(User user,String pageNum,String pageSize) throws Exception {
-        String token = Tools.getAuth(user);
-        String url = uriBuilder
-                .setPath(UserModule.getUsers())
-                .setParameter("pageNum", pageNum)
-                .setParameter("pageSize", pageSize)
-                .build()
-                .toString();
-        Map<String,String> headerMap = request.getHeaders();
-        headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
-        request.setHeaders(headerMap);
-        request.setUrl(url);
-        return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
-    }
 }

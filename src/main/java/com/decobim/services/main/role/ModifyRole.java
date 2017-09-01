@@ -29,7 +29,7 @@ public class ModifyRole extends Base {
                 .setPath(RoleModule.modifyRole(roleId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        request.setHeaders(token);
         request.setUrl(url);
         request.setBody(gson.toJson(role));
         return HttpClientUtil.doPut(request,Thread.currentThread().getStackTrace()[1].getMethodName());

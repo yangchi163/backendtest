@@ -29,8 +29,7 @@ public class DeleteMember extends Base {
                 .setPath(MemberModule.deleteMember(projectId,memberId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doDelete(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

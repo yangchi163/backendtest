@@ -31,12 +31,7 @@ public class DeleteModel extends Base{
                 .setPath(ModelModule.deleteModel(projectId,modelId))
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION ,token);
-        }
-        if (roleId != null){
-            request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
-        }
+        request.setHeaders(token,roleId);
         request.setUrl(url);
         return HttpClientUtil.doDelete(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

@@ -30,8 +30,7 @@ public class UnbindBidSheetBillInfo extends Base {
                 .setPath(MeasurementModule.unbindBidSheetBillInfo())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION, token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID, roleId);
+        request.setHeaders(token,roleId);
         bodyMap.put("bidSheetBillInfoId", bidSheetBillInfoId);
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));

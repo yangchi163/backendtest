@@ -26,9 +26,7 @@ public class ProjectLists extends Base {
                 .setParameter("pageSize","10000")
                 .build()
                 .toString();
-        if (token != null){
-            request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        }
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }

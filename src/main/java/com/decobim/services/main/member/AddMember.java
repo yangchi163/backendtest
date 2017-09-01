@@ -30,8 +30,7 @@ public class AddMember extends Base {
                 .setPath(MemberModule.addMember(projectId))
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
-        request.getHeaders().put(HttpHeadersKey.ROLEID,roleId);
+        request.setHeaders(token,roleId);
         request.setBody(gson.toJson(addMember));
         request.setUrl(url);
         //System.out.println(request);

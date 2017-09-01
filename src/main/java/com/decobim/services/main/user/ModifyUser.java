@@ -27,9 +27,7 @@ public class ModifyUser extends Base{
                 .build()
                 .toString();
         bodyMap.put("name",name);
-        Map<String,String> headerMap = request.getHeaders();
-        headerMap.put(HttpHeadersKey.AUTHORIZATION,token);
-        request.setHeaders(headerMap);
+        request.setHeaders(token);
         request.setUrl(url);
         request.setBody(gson.toJson(bodyMap));
         System.out.println(request);

@@ -24,7 +24,7 @@ public class GetCurrentUser extends Base{
                 .setPath(UserModule.getCurrentUser())
                 .build()
                 .toString();
-        request.getHeaders().put(HttpHeadersKey.AUTHORIZATION,token);
+        request.setHeaders(token);
         request.setUrl(url);
         return HttpClientUtil.doGet(request,Thread.currentThread().getStackTrace()[1].getMethodName());
     }
